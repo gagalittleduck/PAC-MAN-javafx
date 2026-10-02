@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Control.TipsControl"
+            prefWidth="1000" prefHeight="1000"
+            style="-fx-padding: 20;
+         -fx-background-color: linear-gradient(to bottom, #064efd, #04edda);">
+    <top>
+        <HBox alignment="CENTER_LEFT">
+            <Button  fx:id="backButton" style="-fx-font-size: 15;-fx-background-color: white;-fx-font-size: 16px; -fx-padding: 8;"
+                     onAction="#backmenu" prefHeight="40" prefWidth="150" >
+                <graphic>
+                    <ImageView fx:id="back" fitHeight="40" fitWidth="150" preserveRatio="true">
+                        <image>
+                            <!-- 假设在 resources/icons/setting.jpg -->
+                            <Image url="@icons/back.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+    <center>
+        <ScrollPane  xmlns:fx="http://javafx.com/fxml" fx:id="imageScrollPane"  style="-fx-background: transparent;-fx-border-color:transparent;-fx-background-color: transparent">
+            <StackPane alignment="CENTER">
+                <ImageView fx:id="tipsImage" >
+                    <Image url="icons/tips_page.png"/>
+                </ImageView>
+            </StackPane>
+        </ScrollPane>
+    </center>
+</BorderPane>

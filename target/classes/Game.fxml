@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.Canvas?>
+
+<?import javafx.scene.control.Label?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Control.GameControl"
+            fx:id="root" prefWidth="1000" prefHeight="1000"
+            style="-fx-padding: 20;
+         -fx-background-color: linear-gradient(to bottom, #04a5e3, #663cf8);">
+    <top>
+        <Label fx:id="scoreLabel" text="Score: 0" style="-fx-font-size: 20" />
+    </top>
+    <!-- Put a Canvas in the middle to draw the TileMap. -->
+    <center>
+        <Canvas fx:id="tileMapCanvas" width="800" height="800" />
+    </center>
+</BorderPane>

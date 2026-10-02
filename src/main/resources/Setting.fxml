@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Control.SettingControl"
+            prefWidth="1000" prefHeight="1000"
+            style="-fx-background-color:  linear-gradient(to bottom, #064efd, #04edda);
+                   -fx-padding: 20;">
+
+    <!-- 顶部放返回按钮，左对齐 -->
+    <top>
+        <HBox alignment="CENTER_LEFT">
+            <Button  fx:id="backButton" style="-fx-font-size: 15;-fx-background-color: white;-fx-font-size: 16px; -fx-padding: 8;"
+                     onAction="#backmenu" prefHeight="40" prefWidth="150" >
+                <graphic>
+                    <ImageView fx:id="back" fitHeight="40" fitWidth="150" preserveRatio="true">
+                        <image>
+                            <!-- 假设在 resources/icons/setting.jpg -->
+                            <Image url="@icons/back.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </HBox>
+    </top>
+
+    <!-- 中间放原先的设置选项，用 VBox 排列 -->
+    <center>
+        <VBox spacing="15" alignment="CENTER">
+            <!-- 1. 游戏难度 -->
+            <TitledPane text="Game Level" expanded="true" style="-fx-font-size: 15;">
+                <content>
+                    <VBox spacing="8.0" alignment="CENTER" style="-fx-padding: 8;" >
+                        <fx:define>
+                            <ToggleGroup fx:id="levelToggleGroup" />
+                        </fx:define>
+                        <Label fx:id="level_tip" text="" style="-fx-font-size: 20; -fx-text-fill: red"></Label>
+                        <RadioButton fx:id="simple" text="SIMPLE MODE"
+                                     toggleGroup="$levelToggleGroup"
+                                      style="-fx-font-size: 14;" />
+                        <RadioButton fx:id="middle" text="MID MODE"
+                                     toggleGroup="$levelToggleGroup"
+                                     style="-fx-font-size: 14;" />
+                        <RadioButton fx:id="hard" text="HARD MODE"
+                                     toggleGroup="$levelToggleGroup"
+                                     selected="true"
+                                     style="-fx-font-size: 14;" />
+                        <RadioButton fx:id="custom" text="CUSTOM MODE"
+                                     toggleGroup="$levelToggleGroup"
+                                     selected="false"
+                                     onAction="#custom_selected"
+                                     style="-fx-font-size: 14;" />
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <!-- 2. 速度调节 -->
+            <TitledPane text="Speed Settings" expanded="true" style="-fx-font-size: 15;">
+                <content>
+                    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 8;">
+                        <Label fx:id="playerLabel" text="Player Speed"
+                               style="-fx-font-size: 14; -fx-font-weight: bold;" />
+
+                        <Slider fx:id="PlayerBar"
+                                min="0"
+                                max="4"
+                                value="3"
+                                majorTickUnit="1"
+                                minorTickCount="0"
+                                showTickLabels="true"
+                                showTickMarks="true"
+                                snapToTicks="true"
+                                style="-fx-font-size: 14;" />
+                        <Label fx:id="ghostLabel" text="Ghost Speed"
+                               style="-fx-font-size: 14; -fx-font-weight: bold;" />
+
+                        <Slider fx:id="GhostBar"
+                                min="0"
+                                max="4"
+                                value="3"
+                                majorTickUnit="1"
+                                minorTickCount="0"
+                                showTickLabels="true"
+                                showTickMarks="true"
+                                snapToTicks="true"
+                                style="-fx-font-size: 14;" />
+                    </VBox>
+                </content>
+            </TitledPane>
+
+            <!-- 3. 音频设置 -->
+            <TitledPane text="AUDIO SETTINGS"
+                        expanded="true"
+                        style="-fx-font-size: 15;
+                               -fx-background-color: #FAFAFA;
+                               -fx-border-color: #AAA;
+                               -fx-border-width: 1;
+                               -fx-border-radius: 5;">
+                <content>
+                    <VBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10;">
+                        <!-- 滑动开关 (ToggleButton) 来控制音效开关 -->
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Background Sound Effects"
+                                   style="-fx-font-size: 14; -fx-font-weight: bold;" />
+                            <ToggleButton fx:id="soundEffectToggle" text="ON"
+                                          style="-fx-font-size: 14;" onAction="#music"/>
+                        </HBox>
+
+                        <!-- 音量滑杆 -->
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Volume"
+                                   style="-fx-font-size: 14; -fx-font-weight: bold;" />
+                            <Slider fx:id="volumeBar"
+                                    min="0" max="100" value="50"
+                                    showTickLabels="true" showTickMarks="true"
+                                    style="-fx-font-size: 14; -fx-pref-width: 200;" />
+                        </HBox>
+                    </VBox>
+                </content>
+            </TitledPane>
+        </VBox>
+    </center>
+
+</BorderPane>

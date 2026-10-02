@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.canvas.Canvas?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Control.MapDesignControl"
+            prefWidth="1000" prefHeight="1000"
+            style="-fx-padding: 20;
+         -fx-background-color: linear-gradient(to bottom, #064efd, #04edda);">
+    <left>
+        <VBox xmlns="http://javafx.com/javafx"
+              xmlns:fx="http://javafx.com/fxml"
+              alignment="CENTER" spacing="10"
+              prefHeight="100"
+              prefWidth="100"
+              style="-fx-padding: 20;
+        -fx-background-color: transparent">
+            <Button  fx:id="backButton" style="-fx-font-size: 15;-fx-background-color: white;-fx-font-size: 16px; -fx-padding: 8;"
+                     onAction="#backmenu" prefHeight="40" prefWidth="150" >
+                <graphic>
+                    <ImageView fx:id="back" fitHeight="40" fitWidth="150" preserveRatio="true">
+                        <image>
+                            <!-- 假设在 resources/icons/setting.jpg -->
+                            <Image url="@icons/back.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Wall" onAction="#setWall"
+                    style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="wall" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/wall_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Ghost" onAction="#setGhost"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="ghost" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/ghost1_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Player" onAction="#setPlayer"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="player" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/player_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Entrance" onAction="#setEntrance"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="entrance" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/in_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Exit" onAction="#setExit"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="exit" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/out_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Gate" onAction="#setGate"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="gate" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/gate1_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Key" onAction="#setKey"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="key" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/key_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Bombbean" onAction="#setBombbean"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="bombbean" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/bomb0_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Icebean" onAction="#setIcebean"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="icebean" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/ice0_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="Bean" onAction="#setBean"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="bean" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/bean_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+            <Button fx:id="skip" onAction="#skip"
+                      style="-fx-background-color: transparent">
+                <graphic>
+                    <ImageView fx:id="skipImage" style="-fx-background-color: transparent">
+                        <image>
+                            <Image url="@icons/empty_image.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+            </Button>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox>
+            <HBox>
+                <TextField fx:id="rownumber" prefWidth="100" prefHeight="40" promptText="Enter rows number" style="-fx-font-size: 15"/>
+                <TextField fx:id="colnumber" prefWidth="100" prefHeight="40" promptText="Enter cols number" style="-fx-font-size: 15"/>
+                <Button text="Init" style="-fx-font-size: 15;-fx-background-color: #f7ff02;-fx-font-size: 16px; -fx-padding: 8;" onAction="#Preview" prefHeight="40" prefWidth="150"/>
+                <Button text="Save" style="-fx-font-size: 15;-fx-background-color: #ffc402;-fx-font-size: 16px; -fx-padding: 8;" onAction="#saveMap" prefHeight="40" prefWidth="70"/>
+            </HBox>
+            <Label fx:id="errorLabel" style="-fx-text-fill: #ef0505;-fx-font-size: 20"  />
+            <Canvas fx:id="tileMapCanvas" width="800" height="800" />
+
+        </VBox>
+    </center>
+
+</BorderPane>
